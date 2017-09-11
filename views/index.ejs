@@ -1,0 +1,38 @@
+<% layout('layout.ejs') -%>
+
+<% block('head').append('<link rel="stylesheet" href="stylesheets/style.css">') %>
+
+<% include p.ejs %>
+
+<% 
+function add(x, y){
+    return x + y;
+} 
+
+var person = {
+    name: 'dsh'
+}
+%>
+
+<!-- -号：如果值里面有HTML标签，会解析 -->
+<!-- =号：如果值里面有HTML标签，不会解析 -->
+<%- '<h1>' + add(1, 2) + '</h1>' %>
+
+<%= person.name %>
+
+<ul>
+<!-- for语句的开始 -->
+<% for(var i = 0; i < 3; i++){ %>
+    <!-- 普通的HTML标签 -->
+    <li><%= i %></li>
+    <li><%= i %></li>
+<!-- for的结束 -->
+<% } %>
+</ul>
+<!-- 普通注释不能注释ejs语法 -->
+<!-- <% block('footer').append('<footer><h1>我是底部</h1></footer>') %> -->
+<% block('footer', '<footer><h1>我是底部</h1></footer>') %>
+
+<script>
+    console.log('234567890')
+</script>
